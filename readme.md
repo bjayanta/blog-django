@@ -13,4 +13,4 @@
 - create and config some pages & urls file
 - install pillow
 - create models, make migrations & migrate
-- 
+- register app into admin

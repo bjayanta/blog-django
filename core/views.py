@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.views import View
+from website.models import Post
 
 # Create your views here.
 class IndexView(View):
     meta = {
-        "title": "Index"
+        "title": "Index",
+        "posts": Post.objects.all()
     }
 
     def get(self, request):

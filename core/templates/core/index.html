@@ -3,5 +3,19 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h1>Index page</h1>
+    <div>
+        {% for post in posts %}
+            <article>
+                <h1>{{ post.title }}</h1>
+                <figure>
+                    <img src="{{ post.media }}" alt="Media" />
+                    <figcaption>
+                        <h2>{{ post.created_at|timesince }} ago</h2>
+                    </figcaption>
+                </figure>
+                <p>{{ post.content }}</p>
+                <a href="{% url 'website.details' post.slug %}">Read more</a>
+            </article>
+        {% endfor %}
+    </div>
 {% endblock %}

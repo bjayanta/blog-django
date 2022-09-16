@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ post.title }}</h1>
+    <figure>
+        <img src="{{ post.media }}" alt="Media"/>
+        <figcaption>
+            <h2>{{ post.created_at|timesince }}</h2>
+        </figcaption>
+        <p>{{ post.content }}</p>
+    </figure>
+    <a href="{{ request.META.HTTP_REFERER }}">Back</a>
+</article>
+{% endblock %}
