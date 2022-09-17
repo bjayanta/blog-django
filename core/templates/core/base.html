@@ -74,10 +74,18 @@
 
     <!-- Footer -->
     <footer>
+        <!-- primary footer -->
+        {% comment %} 
         <div class="container">
             {% block footer %}
                 <h1>Footer</h1>
             {% endblock %}
+        </div> 
+        {% endcomment %}
+
+        <!-- copyright footer -->
+        <div class="container">
+            <p>Copyright &copy; 2018 - {% now 'Y' %} MaxSOP. All rights reserved.</p>
         </div>
     </footer>
     <!-- Footer end -->
