@@ -10,13 +10,13 @@ class Details(View):
     }
 
     def get(self, request, category_slug, slug):
-        self.meta["post"] = get_object_or_404(Post, slug = slug)
+        self.meta["post"] = get_object_or_404(Post, slug = slug, status = Post.ACTIVE)
         self.meta["form"] = CommentForm()
 
         return render(request, 'website/details.html', self.meta)
 
     def post(self, request, category_slug, slug):
-        self.meta["post"] = get_object_or_404(Post, slug = slug)
+        self.meta["post"] = get_object_or_404(Post, slug = slug, status = Post.ACTIVE)
         form = CommentForm(request.POST)
 
         if form.is_valid():
@@ -37,4 +37,6 @@ class CategoryView(View):
 
     def get(self, request, slug):
         self.meta["category"] = get_object_or_404(Category, slug = slug)
+        self.meta["posts"] = self.meta["category"].posts.filter(status = Post.ACTIVE)
+        
         return render(request, 'website/category.html', self.meta)

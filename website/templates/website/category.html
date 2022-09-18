@@ -4,7 +4,7 @@
 
 {% block content %}
     <div>
-        {% for post in category.posts.all %}
+        {% for post in posts %}
             <article>
                 <h1>{{ post.title }}</h1>
                 <small>Category: {{ post.category }}</small>
@@ -17,6 +17,10 @@
                 <p>{{ post.content }}</p>
                 <a href="{% url 'website.details' post.category.slug post.slug %}">Read more</a>
             </article>
+        {% empty %}
+            <div>
+                <p>There is no posts in this category ...</p>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

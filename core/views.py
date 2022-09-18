@@ -6,7 +6,7 @@ from website.models import Post
 class IndexView(View):
     meta = {
         "title": "Index",
-        "posts": Post.objects.all()
+        "posts": Post.objects.filter(status = Post.ACTIVE)
     }
 
     def get(self, request):
