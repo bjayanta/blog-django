@@ -25,7 +25,7 @@ class Details(View):
             comment.post = self.meta["post"]
             comment.save()
 
-            return redirect('website.details', slug = slug)
+            return redirect('website.details', category_slug = category_slug, slug = slug)
         else:
             self.meta["form"] = CommentForm()
 
