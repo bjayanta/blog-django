@@ -1,20 +1,29 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}{{ title }}{% endblock %}
 
-{% block content %}
+{% block header %}
+<div class="hero px-5 rounded">
     <div>
-        <div>
-            <h1>Search results</h1>
-            <h3>Query "{{ query }}"</h3>
-        </div>
+        <h3>Search results</h3>
+        <h1>Query "{{ query }}"</h1>
+    </div>
+    
+</div>
+{% endblock %}
 
+{% block content %}
+    <div class="row">
         {% for post in posts %}
-            <article>
+            <article class="col-md-4">
                 <h1>{{ post.title }}</h1>
                 <small>Category: {{ post.category }}</small>
                 <figure>
-                    <img src="{{ post.media }}" alt="Media" />
+                    {% if post.media %}
+                        <img src="{{ post.media.url }}" alt="Media" />
+                    {% endif %}
+
                     <figcaption>
                         <h2>{{ post.created_at|timesince }} ago</h2>
                     </figcaption>

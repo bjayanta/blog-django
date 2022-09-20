@@ -2,22 +2,57 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block header %}
+<div class="hero px-5 rounded">
+    <h1>MaxSOP Blog</h1>
+</div>
+{% endblock %}
+
 {% block content %}
-    <div>
-        asfasd
-        {% for post in posts %}
-            <article>
+    <div class="row">
+        {% for post in posts.object_list %}
+            <article class="col-md-4">
                 <h1>{{ post.title }}</h1>
-                <small>Category: {{ post.category }}</small>
+                <strong>{{ post.created_at|timesince }} ago</strong>
                 <figure>
-                    <img src="{{ post.media }}" alt="Media" />
+                    {% if post.media %}
+                        <img src="{{ post.media.url }}" alt="Media" />
+                    {% endif %}
                     <figcaption>
-                        <h2>{{ post.created_at|timesince }} ago</h2>
+                        <p>Category: {{ post.category }}</p>
                     </figcaption>
                 </figure>
                 <p>{{ post.content }}</p>
                 <a href="{% url 'website.details' post.category.slug post.slug %}">Read more</a>
             </article>
         {% endfor %}
+
+        <!-- pagination -->
+        {% if posts.paginator.num_pages > 1 %}
+            <div class="com-md-12 mt-5">
+                <p>Page {{ posts.number }}/{{ posts.paginator.num_pages }}</p>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if posts.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="{% url 'website.index' %}?page={{ posts.previous_page_number }}">Previous</a>
+                            </li>
+                        {% endif %}
+
+                        {% for num_page in posts.paginator.page_range %}
+                            <li class="page-item {% if posts.number == num_page %}active{% endif %}">
+                                <a class="page-link" href="{% url 'website.index' %}?page={{ num_page }}">{{ num_page }}</a>
+                            </li>
+                        {% endfor %}
+
+                        {% if posts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="{% url 'website.index' %}?page={{ posts.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

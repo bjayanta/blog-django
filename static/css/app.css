@@ -1,0 +1,39 @@
+img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 40vh;
+    background-image: url('../images/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* footer */
+.footer {
+    color: #F2F2F2;
+    background-color: #000000;
+}
+
+.footer ul {
+    list-style: none inside;
+    padding: 0;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #F2F2F2;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer a i {
+    font-size: 1.75rem;
+}

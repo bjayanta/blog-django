@@ -2,13 +2,19 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
+{% block header %}
+<div></div>
+{% endblock %}
+
 {% block content %}
 <div>
     <article>
         <h1>{{ post.title }}</h1>
         <a href="{% url 'website.category' post.category.slug %}">{{ post.category }}</a>
         <figure>
-            <img src="{{ post.media }}" alt="Media"/>
+            {% if post.media %}
+                <img src="{{ post.media.url }}" alt="Media"/>
+            {% endif %}
             <figcaption>
                 <h2>{{ post.created_at|timesince }}</h2>
             </figcaption>

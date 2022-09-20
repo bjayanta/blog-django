@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,10 @@
     <title>{% block title %}Title{% endblock %} | Blog</title>
 
     <!-- Stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}"/>
+    {% block style %}{% endblock %}
 </head>
 <body>
 
@@ -53,7 +57,7 @@
     <!-- Navigation end -->
 
     <!-- Header -->
-    <header>
+    <header class="my-3">
         <div class="container">
             {% block header %}
                 <h1>Header</h1>
@@ -63,7 +67,7 @@
     <!-- Header end -->
     
     <!-- Main contenter -->
-    <section>
+    <section class="my-5">
         <div class="container">
             {% block content %}
                 <h1>Main container</h1>
@@ -73,19 +77,111 @@
     <!-- Main contenter end -->
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer pt-5 pb-3">
         <!-- primary footer -->
-        {% comment %} 
         <div class="container">
-            {% block footer %}
-                <h1>Footer</h1>
-            {% endblock %}
+            <div class="row">
+                <div class="col-md-5">
+                    <article>
+                        <h5>MaxSOP Blog</h5>
+                        <p>Fast growing software development company located in Bangladesh. Over the last 4+ years, we have served more than 1.6k+ customers of various industries. In our endeavor, we have a highly skilled developer, designer, analyst & management team. With many happy clients at home and abroad MaxSOP is moving forward.</p>
+                        <p>Our goal is to take the information technology sector of Bangladesh to the next level and make accessible to people of every corner of our country.</p>
+                    </article>
+                </div>
+
+                <div class="col-md-3">
+                    <nav>
+                        <h5>Development & IT</h5>
+                        <ul>
+                            <li><a href="#">Design & Development</a></li>
+                            <li><a href="#">Mobile App Development</a></li>
+                            <li><a href="#">Graphics & Media</a></li>
+                            <li><a href="#">Ads & Degital Marketing</a></li>
+                            <li><a href="#">Cloud Services</a></li>
+                            <li><a href="#">QA and Test Automation</a></li>
+                            <li><a href="#">Education & Training</a></li>
+                            <li><a href="#">Maintenance & Implementation</a></li>
+                            <li><a href="#">Consultancy</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-2">
+                    <nav>
+                        <h5>Resources</h5>
+                        <ul>
+                            <li><a href="#">Help & Support</a></li>
+                            <li><a href="#">MaxSOP Community</a></li>
+                            <li><a href="#">MaxSOP Lab</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Engineering Blog</a></li>
+                            <li><a href="#">Business tools</a></li>
+                            <li><a href="#">Webinars</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-2">
+                    <nav>
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="{% url 'website.about' %}">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Our Leadership</a></li>
+                            <li><a href="#">Ethics & Compliance</a></li>
+                            <li><a href="#">Investor Relations</a></li>
+                            <li><a href="#">Press Room</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div> 
-        {% endcomment %}
 
         <!-- copyright footer -->
         <div class="container">
-            <p>Copyright &copy; 2018 - {% now 'Y' %} MaxSOP. All rights reserved.</p>
+            <nav class="mb-3">
+                <a rel="nofollow" href="https://www.facebook.com/themaxsop" class="facebook me-2" target="_blank">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a rel="nofollow" href="https://www.youtube.com/channel/UCragUvgM7Dw6Ic357vG42UQ" class="youtube me-2" target="_blank">
+                    <i class="bi bi-youtube"></i>
+                </a>
+
+                <a rel="nofollow" href="https://github.com/themaxsop" class="github me-2" target="_blank">
+                    <i class="bi bi-github"></i>
+                </a>
+
+                <a rel="nofollow" href="https://twitter.com/maxsopofficial" class="twitter me-2" target="_blank">
+                    <i class="bi bi-twitter"></i>
+                </a>
+
+                <a rel="nofollow" href="https://www.linkedin.com/company/maxsop/" class="linkedin me-2" target="_blank">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+
+                <a rel="nofollow" href="https://www.pinterest.com/maxsopofficial/_created/" class="pinterest me-2" target="_blank">
+                    <i class="bi bi-pinterest"></i>
+                </a>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <nav>
+                        <a href="#" class="me-3">Privacy policy</a>
+                        <a href="#" class="me-3">Terms & Conditions</a>
+                        <a href="#" class="me-3">Accessibility</a>
+                        <a href="#" class="me-3">Legal</a>
+                        <a href="#" class="me-3">Site map</a>
+                    </nav>
+                </div>
+
+                <div class="col-md-6 text-end">
+                    <p>Copyright &copy; 2018 - {% now 'Y' %} <a href="https://maxsop.com" target="_blank">MaxSOP</a>. All rights reserved.</p>
+                </div>
+            </div>
+            
         </div>
     </footer>
     <!-- Footer end -->
