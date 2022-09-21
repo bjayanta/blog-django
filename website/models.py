@@ -1,4 +1,3 @@
-from tkinter import ACTIVE
 from unicodedata import category, name
 from django.db import models
 
